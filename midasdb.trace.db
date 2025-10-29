@@ -1,0 +1,6 @@
+2025-10-28 19:11:44.266049+05:30 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USERS" not found (this database is empty); SQL statement:
+select count(*) from users u1_0 [42104-224]
+2025-10-28 19:12:05.422218+05:30 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USERS" not found (this database is empty); SQL statement:
+select count(*) from users u1_0 [42104-224]

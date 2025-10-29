@@ -3,11 +3,12 @@ package com.jpmc.midascore.entity;
 import jakarta.persistence.*;
 
 @Entity
-public class UserRecord {
+@Table(name = "users") // ✅ Avoid 'user' reserved keyword in H2
+public class User {
 
     @Id
-    @GeneratedValue()
-    private long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // Use IDENTITY for auto-increment
+    private Long id;
 
     @Column(nullable = false)
     private String name;
@@ -15,17 +16,13 @@ public class UserRecord {
     @Column(nullable = false)
     private float balance;
 
-    protected UserRecord() {
+    protected User() {
+        // JPA needs a default constructor
     }
 
-    public UserRecord(String name, float balance) {
+    public User(String name, float balance) {
         this.name = name;
         this.balance = balance;
-    }
-
-    @Override
-    public String toString() {
-        return String.format("User[id=%d, name='%s', balance='%f'", id, name, balance);
     }
 
     public Long getId() {
@@ -42,5 +39,10 @@ public class UserRecord {
 
     public void setBalance(float balance) {
         this.balance = balance;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("User[id=%d, name='%s', balance=%.2f]", id, name, balance);
     }
 }
